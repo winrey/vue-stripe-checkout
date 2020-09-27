@@ -84,6 +84,10 @@ export default {
       this.card = this.elements.create('card', { style: this.styleObject || this.style });
       this.card.mount('#card-element');
 
+      this.card.addEventListener('ready', ({ error }) => {
+        this.$emit('loading', false);
+      });
+
       this.card.addEventListener('change', ({ error }) => {
         const displayError = document.getElementById('card-errors');
         if (error) {
@@ -117,8 +121,6 @@ export default {
           this.$emit('loading', false);
         }
       });
-      
-      this.$emit('loading', false);
     });
   }
 }
