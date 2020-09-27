@@ -117,6 +117,8 @@ export default {
           this.$emit('loading', false);
         }
       });
+      
+      this.$emit('loading', false);
     });
   }
 }
