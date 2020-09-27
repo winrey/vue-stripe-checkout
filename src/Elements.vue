@@ -82,11 +82,12 @@ export default {
       this.stripe = window.Stripe(this.pk, options);
       this.elements = this.stripe.elements();
       this.card = this.elements.create('card', { style: this.styleObject || this.style });
-      this.card.mount('#card-element');
 
       this.card.addEventListener('ready', ({ error }) => {
         this.$emit('loading', false);
       });
+      
+      this.card.mount('#card-element');
 
       this.card.addEventListener('change', ({ error }) => {
         const displayError = document.getElementById('card-errors');
